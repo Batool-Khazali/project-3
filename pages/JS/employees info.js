@@ -10,8 +10,11 @@ window.onload = async function loadData() {
 
     localStorage.setItem("employees", JSON.stringify(jsondata)); // set data to local storage;
 
-    infoTable(jsondata.sort()) // fill table function with the data from api;
+    infoTable(jsondata) // fill table function with the data from api;
+
+    
 };
+
 
 // table function. brings data from 
 function infoTable(data) {
@@ -41,11 +44,13 @@ function infoTable(data) {
 
 // const for each search 
 const searchName = document.getElementById('searchName');
-const searchID = document.getElementById('searchID')
+const searchID = document.getElementById('searchID');
+const searchGender = document.getElementById('searchGender');
 
 
 // event for search by name
 searchName.addEventListener('keyup', function() {
+    
     let val = this.value; // take the input value and save it in variable;
     var newData = search(val, jsondata); // create a variable that calls the search func and sets the input data and jsonAPI data as the func parameters. the result of the func will be the variable value;
 
@@ -59,6 +64,14 @@ searchID.addEventListener('keyup', function() {
     infoTable(newData);
 });
 
+searchGender.addEventListener('change', function() {
+    let val = this.value;
+    console.log(val)
+    var newData = search(val, jsondata);
+    infoTable(newData);
+})
+
+
 // search func
 function search(value, data) {
     var filter = []; // create an empty array;
@@ -71,6 +84,8 @@ function search(value, data) {
 
         var id = JSON.stringify(data[x].socialNumber); // save the id value to a variable after turning it to a string so that .includes() works;
 
+        var gender = data[x].gender;
+
         // if statements to see if the name/id data includes the input data. you can search both at the same time;
         if (name.includes(val)) {
             filter.push(data[x]); // if there's a match, push it to the array;
@@ -78,6 +93,10 @@ function search(value, data) {
         if (id.includes(val)) {
             filter.push(data[x]);
         };
+        if (gender == val) {
+            filter.push(data[x]);
+        }
+
     };
     return filter; // return the array after you go through all of the data;
 };
@@ -86,30 +105,38 @@ function search(value, data) {
 
 const columnHead = document.getElementsByTagName("th");
 
-for (let a = 0; a < columnHead.length; a++) {
-    
+for (let a = 1; a < columnHead.length; a++) {
     
     columnHead[a].addEventListener('click', function () {
-        let art = columnHead[a].attributes.value.value
-        let icon = document.getElementsByClassName('sortIcon')[a].innerHTML;
-        console.log(icon)
+        let sortDirection = columnHead[a].attributes.value.value
+        let text;
         
         if (columnHead[a].className == 'desc') {
-            jsondata = jsondata.sort((a,b) => a[art] > b[art] ? 1 : -1);;
+            jsondata = jsondata.sort((a,b) => a[sortDirection] > b[sortDirection] ? 1 : -1);;
 
             columnHead[a].classList.replace("desc", "asc");
-            icon = ' <i class="fa-solid fa-sort-up"></i> '
-            console.log(icon)
+            text =  '<i class="fa-solid fa-sort-up"></i>';
+            // console.log(text);
         } 
         else if (columnHead[a].className == 'asc') {
             jsondata = jsondata.reverse();
             columnHead[a].classList.replace("asc", "desc");
-            icon = ' <i class="fa-solid fa-sort-down"></i> '
-            console.log(icon)
+            text = '<i class="fa-solid fa-sort-down"></i>' ;
+            // console.log(text);
 
         };
 
-        infoTable(jsondata)
+        let icon = document.getElementsByClassName('sortIcon')[a - 1];
+        icon.innerHTML = text;
+        // console.log(icon);
+        infoTable(jsondata);
     });
     
 };
+
+
+
+
+
+
+

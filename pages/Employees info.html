@@ -68,27 +68,36 @@
         <h1>Employees' Informations</h1>
 
         <div id="searchContainer">
-            <input type="text" name="searchName" id="searchName" placeholder="Name">
+            <p>Search by:</p>
+            <input type="text" name="searchName" id="searchName" placeholder="Name"> 
             <input type="number" name="searchID" id="searchID" placeholder="Social security number">
+            <select name="gender" id="searchGender">
+                <option value="none" selected disabled hidden>select gender</option>
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
         </div>
 
-        <table id="employeesInfo">
-            <thead id="header">
-                <tr>
-                    <th class="desc" value="desc"></th>
-                    <th class="desc" value="socialNumber">Social security number <span class="sortIcon"></span></th>
-                    <th class="desc" value="name">Full name <span class="sortIcon"></span></th>
-                    <th class="desc" value="gender">Gender <span class="sortIcon"></span></th>
-                    <th class="desc" value="address">Address <span class="sortIcon"></span></th>
-                    <th class="desc" value="maritalStatus">Marital status <span class="sortIcon"></span></th>
-                    <th class="desc" value="DateOfEmployment">Date of employment <span class="sortIcon"></span></th>
-                    <th class="desc" value="email">E-mail <span class="sortIcon"></span></th>
-                </tr>
-            </thead>
-            <tbody id="information">
-            </tbody>
-        </table>
+        <div id="tableContainer">
+            
+            <table id="employeesInfo" class="table table-hover table-responsive table-striped ">
+                <thead id="header">
+                    <tr>
+                        <th class="desc" value="desc"></th>
+                        <th class="desc" value="socialNumber">Social security number <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                        <th class="desc" value="name">Full name <span class="sortIcon"> <i class="fa-solid fa-sort"></i> </span></th>
+                        <th class="desc" value="gender">Gender <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                        <th class="desc" value="address">Address <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                        <th class="desc" value="maritalStatus">Marital status <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                        <th class="desc" value="DateOfEmployment">Date of employment <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                        <th class="desc" value="email">E-mail <span class="sortIcon"><i class="fa-solid fa-sort"></i></span></th>
+                    </tr>
+                </thead>
+                <tbody id="information">
+                </tbody>
+            </table>
 
+        </div>
 
     </div>
 

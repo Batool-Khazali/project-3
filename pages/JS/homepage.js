@@ -6,13 +6,24 @@ document.addEventListener("DOMContentLoaded", () => {
             const textOverlay = card1.querySelector('.text-overlay');
             textOverlay.style.opacity = '1';
 
-            // textOverlay.style.transform = 'scale(2)';
+            card1.style.transform = 'scale(1.02)';
+            card1.style.transition = '0.3s ease';
         });
 
         card1.addEventListener('mouseout', () => {
             const textOverlay = card1.querySelector('.text-overlay');
             textOverlay.style.opacity = '0';
-            // textOverlay.style.transform = 'scale(1)';
+            card1.style.transform = 'scale(1)';
+            card1.style.transition = '0.3s ease';
+
         });
     });
 });
+
+// window.addEventListener("resize", function() {
+//     const textOverlay = card1.querySelector('.text-overlay');
+//     textOverlay.style.opacity = '1';
+//     card1.style.transform = 'scale(1)';
+//     card1.style.transition = '0 ease';
+// });
+

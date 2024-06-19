@@ -46,7 +46,6 @@ width: 100%;
 }
 #introImage, #introText{
     width: 45%;
-    overflow: hidden;
     border-radius: 1em;
 }
 #introText {
@@ -60,23 +59,30 @@ width: 100%;
     box-shadow: 0 7px 6px rgba(0, 0, 0, 0.2);
     max-height: 85%;
     margin: 3em 0;
-
+    overflow: hidden;
+    border: 0.07em groove #E0F7FA;
 }
 #introImage  {
 position: relative;
 }
 #introImage img {
-max-width: 150%;
+max-width: 160%;
 position: absolute;
 bottom: 0;
-right: -20em;
+right: -21em;
+/* z-index: -1; */
 }
 #introText h1, #introText p{
     margin: 0.7em 0;
 }
 #introText h1{
     color: #ffa726;
+    font-size: 3em;
 } 
+#introText p{
+    font-size: 1.3em;
+} 
+
 @keyframes waving {
 from {
     transform: translateX(-50%) skew(-3deg, -10deg);
@@ -170,7 +176,7 @@ to {
 .text-overlay a {
     text-decoration: none;
     text-align: center;
-    color: rgb(0, 0, 0);
+    color: #003366;
 
 
 }
@@ -191,4 +197,12 @@ to {
         width: 20em;
         height: 20em;
     }
+    .text-overlay {
+        opacity: 1;
+    }
+    .text-overlay p {
+        font-weight: lighter;
+        font-size: 0.65em;
+    }
 }
+
